@@ -18,6 +18,9 @@ class CustomerList
 
 		void print();
 
+		void setHead(Customer *);
+		Customer *getHead();
+
 	private:
 		Customer *head;
 		int size;

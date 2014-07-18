@@ -131,5 +131,43 @@ int CustomerList::getSize()
 	return size;
 }
 
+void CustomerList::setHead(Customer *newHead)
+{
+	head = newHead;
+}
+
+Customer *CustomerList::getHead()
+{
+	return head;
+}
+
+
 void CustomerList::remove(int ID)
-{}	
+{
+	Customer *lead = this->getHead();
+	Customer *tail = NULL;
+
+	while(lead->getID() != ID) {
+		tail = lead;
+		lead = lead->getNext();
+	}
+
+	if(tail == NULL) { // means that lead is pointing to head
+		this->setHead(lead->getNext());
+		lead->setNext(NULL);
+		delete lead;
+		return;
+	}
+	else if(lead == NULL) { // element not found in the list	
+		cout << "Element to be removed was not found in the list\n";
+		return;
+	}
+	else {
+		tail->setNext(lead->getNext());
+		lead->setNext(NULL);
+		delete lead;
+		return;
+	}
+
+
+}	
