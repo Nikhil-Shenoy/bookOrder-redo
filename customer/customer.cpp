@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "customer.h"
+#include "../order/order.h"
 using namespace std;
 
 Customer::Customer(string Name, int ID, double Credit, string Street, string State, string Zip)
@@ -87,6 +88,30 @@ void Customer::setNext(Customer *newNext)
 Customer *Customer::getNext()
 {
 	return next;
+}
+
+void Customer::accept(Order *goodOrder)
+{
+	this->accepted.insert(goodOrder);
+	return;
+}
+
+void Customer::reject(Order *badOrder)
+{	
+	rejected.insert(badOrder);
+	return;
+}
+
+void Customer::printAccepted()
+{
+	accepted.print();
+	return;
+}
+
+void Customer::printRejected()
+{
+	rejected.print();
+	return;
 }
 
 void Customer::print()

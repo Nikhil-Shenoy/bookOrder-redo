@@ -8,17 +8,46 @@
 #include <boost/tokenizer.hpp>
 #include "customer/customer.h"
 #include "customer/customerList.h"
+#include "order/order.h"
 using namespace std;
 using namespace boost;
+
+Order *buffer[10];
 
 
 void *prodFunct(void *argument)
 {
-	cout << "hello from thread" << endl;
-	string myArg = *((string *)argument);
+	cout << "The result is: " << *((string *)argument) << endl;
+
+	FILE *orderFile = fopen("orders.txt","r");
+
+	char temp[251];
+
+	while(fgets(temp,250,orderFile))
+	{
+
+		char *title = strtok(temp,"|");
+		char *price = strtok(NULL,"|");
+		char *ID = strtok(NULL,"|");
+		char *category = strtok(NULL,"|");
+
+		Order *newOrder = new Order(title,atof(price),atoi(ID),category);
+		cout << "\n\n";
+		newOrder->print();
+		cout << "\n\n";
+
+
+		delete newOrder;
+/*
+		newOrder->print();
+		
+		delete newOrder;
+		*/
 	
-	cout << "Hello from the prodFunct function!";
-	cout << " The argument is " << myArg;
+	}
+	
+	
+	fclose(orderFile);
 
 }
 
@@ -54,7 +83,7 @@ int main(int argc, char **argv)
 */
 
 
-	char *categories[catCount];
+	string categories[catCount];
 
 
 	catCount = 0;
@@ -98,17 +127,13 @@ int main(int argc, char **argv)
 	pthread_t consumer;
 
 
-	string arg("Vineet Shenoy");
-	string *ptr = &arg;
-
-	int returnValue;
-
 	cout << "creating thread\n";	
-	returnValue = pthread_create(&producer, NULL, prodFunct, (void *)ptr);	
+	pthread_create(&producer, NULL, prodFunct, (void *)&categories[1]);	
 
-	pthread_join(producer, NULL);
-	cout << "The returnValue is: " << returnValue << endl;
+	int status;
+	status = pthread_join(producer, NULL);
 
+	cout << "Status is: " << status << endl;
 	return 0;
 }	
 

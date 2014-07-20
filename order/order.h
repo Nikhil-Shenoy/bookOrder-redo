@@ -25,6 +25,8 @@ class Order {
 		void setNext(Order *newNext);
 		Order *getNext();
 
+		void print();
+
 	private:
 		string title;
 		double price;

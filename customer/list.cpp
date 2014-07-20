@@ -24,7 +24,12 @@ int main()
 
 	found = myList.find(2);
 
+	myList.remove(2);
+	myList.remove(5);
+	myList.remove(4);
+	myList.remove(1);
 	myList.remove(3);
+	myList.remove(4);
 	myList.print();
 
 	
@@ -32,13 +37,13 @@ int main()
 //	found->print();	
 
 	cout << "The size is: " << myList.getSize() << endl;
-
+/*
 	delete one;
 	delete two;
 	delete three;
 	delete four;
 	delete five;
-	
+*/	
 	return 0;
 }
 	

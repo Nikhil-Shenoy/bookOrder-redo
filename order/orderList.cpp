@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
-#include "customer.h"
-#include "customerList.h"
+#include "order.h"
+#include "orderList.h"
 using namespace std;
 
-CustomerList::CustomerList()
+OrderList::OrderList()
 	:head(NULL), size(0)
 {
 	head = NULL;
@@ -12,9 +12,9 @@ CustomerList::CustomerList()
 	cout << endl;
 }
 
-Customer *CustomerList::find(int ID)
+Order *OrderList::find(int ID)
 {
-	Customer *query = head;
+	Order *query = head;
 
 	while(query->getID() != ID)
 		query = query->getNext();
@@ -25,22 +25,22 @@ Customer *CustomerList::find(int ID)
 		return query;
 }
 
-void CustomerList::insert(string Name, int custID, double credit, string Street, string State, string Zip)
+void OrderList::insert(const char * title, double price, int ID, const char *category)
 {	
-	Customer *newCustomer = new Customer(Name, custID, credit,Street,State,Zip);
+	Order *newOrder = new Order(title,price,ID,category);
 
-	Customer *lead = head;
-	Customer *tail = NULL;
+	Order *lead = head;
+	Order *tail = NULL;
 
 	if(head == NULL)
 	{
-		head = newCustomer;
-		newCustomer->setNext(NULL);
+		head = newOrder;
+		newOrder->setNext(NULL);
 		size++;
 		return;
 	}
 
-	while((lead != NULL) && (newCustomer->getID() >= lead->getID()))
+	while((lead != NULL) && (newOrder->getID() >= lead->getID()))
 	{
 		tail = lead;
 		lead = lead->getNext();
@@ -48,43 +48,43 @@ void CustomerList::insert(string Name, int custID, double credit, string Street,
 
 	if(tail == NULL) // we haven't moved
 	{
-		newCustomer->setNext(lead);
-		head = newCustomer;
+		newOrder->setNext(lead);
+		head = newOrder;
 		size++;
 		return;
 	}
 	else if(lead == NULL) // end of the list
 	{
-		tail->setNext(newCustomer);
-		newCustomer->setNext(NULL);
+		tail->setNext(newOrder);
+		newOrder->setNext(NULL);
 		size++;
 		return;
 	}
 	else
 	{
-		newCustomer->setNext(lead);
-		tail->setNext(newCustomer);
+		newOrder->setNext(lead);
+		tail->setNext(newOrder);
 		size++;
 		return;
 	}
 }
 
 
-void CustomerList::insert(Customer *newCustomer)
+void OrderList::insert(Order *newOrder)
 {
 
-	Customer *lead = head;
-	Customer *tail = NULL;
+	Order *lead = head;
+	Order *tail = NULL;
 
 	if(head == NULL)
 	{
-		head = newCustomer;
-		newCustomer->setNext(NULL);
+		head = newOrder;
+		newOrder->setNext(NULL);
 		size++;
 		return;
 	}
 
-	while((lead != NULL) && (newCustomer->getID() >= lead->getID()))
+	while((lead != NULL) && (newOrder->getID() >= lead->getID()))
 	{
 		tail = lead;
 		lead = lead->getNext();
@@ -92,22 +92,22 @@ void CustomerList::insert(Customer *newCustomer)
 
 	if(tail == NULL) // we haven't moved
 	{
-		newCustomer->setNext(lead);
-		head = newCustomer;
+		newOrder->setNext(lead);
+		head = newOrder;
 		size++;
 		return;
 	}
 	else if(lead == NULL) // end of the list
 	{
-		tail->setNext(newCustomer);
-		newCustomer->setNext(NULL);
+		tail->setNext(newOrder);
+		newOrder->setNext(NULL);
 		size++;
 		return;
 	}
 	else
 	{
-		newCustomer->setNext(lead);
-		tail->setNext(newCustomer);
+		newOrder->setNext(lead);
+		tail->setNext(newOrder);
 		size++;
 		return;
 	}
@@ -115,9 +115,9 @@ void CustomerList::insert(Customer *newCustomer)
 	
 }
 	
-void CustomerList::print()
+void OrderList::print()
 {
-	Customer *temp = head;
+	Order *temp = head;
 
 	while(temp != NULL)
 	{
@@ -126,26 +126,26 @@ void CustomerList::print()
 	}
 }
 
-int CustomerList::getSize()
+int OrderList::getSize()
 {
 	return size;
 }
 
-void CustomerList::setHead(Customer *newHead)
+void OrderList::setHead(Order *newHead)
 {
 	head = newHead;
 }
 
-Customer *CustomerList::getHead()
+Order *OrderList::getHead()
 {
 	return head;
 }
 
 
-void CustomerList::remove(int ID)
+void OrderList::remove(int ID)
 {
-	Customer *lead = this->getHead();
-	Customer *tail = NULL;
+	Order *lead = this->getHead();
+	Order *tail = NULL;
 	if(lead == NULL) {
 		cout << "List is empty.\n";
 		return;

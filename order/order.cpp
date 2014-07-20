@@ -61,4 +61,19 @@ void Order::setNext(Order *newNext)
 Order *Order::getNext()
 {
 	return next;
-}	
+}
+
+void Order::print()
+{
+	cout << "Title is: " << title << endl;
+	cout << "Price is: $" << price << endl;
+	cout << "ID is: " << ID << endl;
+	cout << "Category is: " << category<< endl;
+	cout << "\n";
+}
+
+
+
+
+
+	

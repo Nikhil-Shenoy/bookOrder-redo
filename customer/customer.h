@@ -1,7 +1,8 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 #include <string>
-
+#include "../order/orderList.h"
+#include "../order/order.h"
 using namespace std;
 
 class Customer 
@@ -31,7 +32,11 @@ class Customer
 		void setNext(Customer *);
 		Customer *getNext();
 
-		
+		void accept(Order *goodOrder);
+		void reject(Order *badOrder);
+
+		void printAccepted();
+		void printRejected();
 
 		void print();
 
@@ -42,6 +47,9 @@ class Customer
 		string street;
 		string state;
 		string zip;
+		
+		OrderList accepted;
+		OrderList rejected;
 		
 		Customer *next;
 

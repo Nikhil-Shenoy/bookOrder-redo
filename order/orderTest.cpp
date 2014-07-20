@@ -8,12 +8,7 @@ int main()
 	Order first("1984",7.99,1,"politics");
 
 	cout << "Let's see the contents of this order:\n";
-	cout << "\tTitle: " << first.getTitle() << "\n";
-	cout << "\tPrice: $" << first.getPrice() << "\n";
-	cout << "\tID: " << first.getID() << "\n";
-	cout << "\tCategory: " << first.getCategory() << "\n";
-	cout << "\tNext: " << first.getNext() << "\n";
-
+	first.print();
 	cout << "\n";
 
 	cout << "Now let's change what's inside the thing\n";
@@ -27,11 +22,9 @@ int main()
 	first.setNext(&second);
 
 	cout << "\n\nLet's see the contents of this order:\n";
-	cout << "\tTitle: " << first.getTitle() << "\n";
-	cout << "\tPrice: $" << first.getPrice() << "\n";
-	cout << "\tID: " << first.getID() << "\n";
-	cout << "\tCategory: " << first.getCategory() << "\n";
-	cout << "\tNext: " << first.getNext() << "\n";
+	first.print();
+
+	cout << "\n Now we're going to test the scope of the object\n";
 
 
 	return 0;
