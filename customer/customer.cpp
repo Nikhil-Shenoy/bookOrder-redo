@@ -92,7 +92,7 @@ Customer *Customer::getNext()
 
 void Customer::accept(Order *goodOrder)
 {
-	this->accepted.insert(goodOrder);
+	accepted.insert(goodOrder);
 	return;
 }
 

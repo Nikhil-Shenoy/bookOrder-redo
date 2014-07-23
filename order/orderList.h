@@ -8,6 +8,7 @@ class OrderList
 {
 	public:
 		OrderList();
+		~OrderList();
 
 		Order *find(int ID);
 		void insert(Order *newOrder);

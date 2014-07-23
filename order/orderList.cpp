@@ -173,3 +173,22 @@ void OrderList::remove(int ID)
 		return;
 	}
 }	
+
+
+OrderList::~OrderList()
+{
+	cout << "OrderList Destructor called\n";
+
+	Order *lead = head;
+	Order *tail = NULL;
+
+	while(lead != NULL)
+	{
+		cout << "pass through the loop\n";
+		tail = lead;
+		lead = lead->getNext();
+		tail->setNext(NULL);
+		delete tail;
+	}
+
+}
