@@ -1,0 +1,6 @@
+1) Do the remove function for the customerList.cpp (done)
+2) Figure out whether creating those objects inside the loop is a good idea or not. If not, find a better way to create those objects. (done)
+3) Get the thread stuff going
+4) Tokenize orders.txt to create order objects (Done)
+5) Place the orders as they are created into the shared buffer
+6) Process, and place in appropriate person's accepted or rejected list
