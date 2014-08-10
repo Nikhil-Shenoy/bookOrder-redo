@@ -17,7 +17,7 @@ Customer::Customer(string Name, int ID, double Credit, string Street, string Sta
 
 Customer::~Customer()
 {
-	cout << "The Destructor was called" << endl;
+//	cout << "The Destructor was called" << endl;
 }
 
 

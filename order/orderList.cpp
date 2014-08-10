@@ -184,7 +184,6 @@ OrderList::~OrderList()
 
 	while(lead != NULL)
 	{
-		cout << "pass through the loop\n";
 		tail = lead;
 		lead = lead->getNext();
 		tail->setNext(NULL);
