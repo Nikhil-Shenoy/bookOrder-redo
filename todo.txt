@@ -1,0 +1,3 @@
+2) Make sure multiple threads can interact with the shared buffer
+3) Make sure the orders get added to the correct person's list
+4) Need to wrap the incrementation of the global total variable with a mutex. Multiple threads will be accessing it
